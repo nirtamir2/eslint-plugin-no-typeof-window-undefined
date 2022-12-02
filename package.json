@@ -21,12 +21,12 @@
   ],
   "scripts": {
     "build": "tsc",
-    "type-check": "tsc --noEmit",
     "clean": "rimraf lib",
-    "format": "prettier --write \"**/*.{ts,js,json}\"",
+    "format": "prettier --write \"**/*.{ts,js,json,md}\"",
     "lint": "eslint --fix \"src/**/*.{ts,js,json}\"",
     "prepublish": "npm run clean && npm run build",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc --noEmit"
   },
   "jest": {
     "moduleFileExtensions": [

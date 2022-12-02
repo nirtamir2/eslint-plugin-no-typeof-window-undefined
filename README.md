@@ -10,47 +10,13 @@ It's recommended to use `document` over `window` because server runtimes like De
 
 ## Installation
 
-You'll first need to install [ESLint](http://eslint.org):
-
 ```bash
-$ pnpm add eslint --D
-$ npm i eslint --save-dev
+$ pnpm add -D eslint eslint-plugin-no-typeof-window-undefined
 ```
-
-Next, install `eslint-plugin-no-typeof-window-undefined`:
-
-```bash
-$ pnpm add -D eslint-plugin-no-typeof-window-undefined
-$ npm install eslint-plugin-no-typeof-window-undefined --save-dev
-```
-
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also
-install `eslint-plugin-no-typeof-window-undefined` globally.
 
 ## Usage
 
-Add `no-typeof-window-undefined` to the plugins section of your `.eslintrc` configuration file. You can omit
-the `eslint-plugin-` prefix:
-
-```json
-{
-  "plugins": [
-    "no-typeof-window-undefined"
-  ]
-}
-```
-
-Then configure the rule under the rules section.
-
-```json
-{
-  "rules": {
-    "no-typeof-window-undefined/no-typeof-window-undefined": "warn"
-  }
-}
-```
-
-Or enable it with defaults
+Add to `.eslintrc`
 
 ```json
 {
@@ -60,26 +26,44 @@ Or enable it with defaults
 }
 ```
 
-Often it makes sense to enable `no-typeof-window-undefined` only for certain files/directories. For cases like that, use
-override key of eslint config:
+## Rules
 
-```jsonc
-{
-  "plugins": ["no-typeof-window-undefined"],
-  "rules": {
-    "no-typeof-window-undefined/no-typeof-window-undefined": "off"
-  },
-  "overrides": [
-    {
-      "files": ["src/**/index.{ts,js}"],
-      "rules": {
-        "no-typeof-window-undefined/no-typeof-window-undefined": "error
-      }
-    }
-  ]
+✅ Set in the `recommended` configuration
+🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
+
+
+| Name                                                                                             | Description                                                                                                                                                                                                       | 💼 | 🔧 |
+| :----------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :- | :- |
+| [no-typeof-window-undefined](docs/rules/no-typeof-window-undefined.md)                                                       | Improve SSR/Browser environment check by using typeof document !== "undefined".                                                                                                                                                    | ✅  |🔧 |
+
+### no-typeof-window-undefined
+
+Because the same JavaScript code can run in the browser as well as the server, sometimes you need to have a part of your
+code that only runs in one context or the other:
+
+```ts
+if (typeof window === "undefined") {
+// running in a server environment
+} else {
+// running in a browser environment
 }
 ```
 
+This works fine in a Node.js environment, however, Deno actually supports window! So if you really want to check whether
+you're running in the browser, it's better to check for document instead:
+
+```ts
+if (typeof document === "undefined") {
+// running in a server environment
+} else {
+// running in a browser environment
+}
+```
+
+This will work for all JS environments (Node.js, Deno, Workers, etc.).
+
+
 ## Credits
+
 - https://twitter.com/JLarky/status/1598147116093693952
 - [Remix documentation](https://remix.run/docs/en/v1/pages/gotchas#typeof-window-checks)
