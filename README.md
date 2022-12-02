@@ -31,7 +31,7 @@ Add to `.eslintrc`
 
 | Name                                                                   | Description                                                                     | 💼  | 🔧  |
 | :--------------------------------------------------------------------- | :------------------------------------------------------------------------------ | :-- | :-- |
-| [no-typeof-window-undefined](docs/rules/no-typeof-window-undefined.md) | Improve SSR/Browser environment check by using typeof document !== "undefined". | ✅  | 🔧  |
+| [no-typeof-window-undefined](docs/rules/no-typeof-window-undefined.md) | Improve SSR/Browser environment check by using `typeof document !== "undefined"`. | ✅  | 🔧  |
 
 ### no-typeof-window-undefined
 
