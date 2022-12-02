@@ -10,9 +10,9 @@ code that only runs in one context or the other:
 
 ```ts
 if (typeof window === "undefined") {
-// running in a server environment
+  // running in a server environment
 } else {
-// running in a browser environment
+  // running in a browser environment
 }
 ```
 
@@ -21,9 +21,9 @@ you're running in the browser, it's better to check for document instead:
 
 ```ts
 if (typeof document === "undefined") {
-// running in a server environment
+  // running in a server environment
 } else {
-// running in a browser environment
+  // running in a browser environment
 }
 ```
 
@@ -32,21 +32,21 @@ This will work for all JS environments (Node.js, Deno, Workers, etc.).
 ## Fail
 
 ```js
-typeof window === "undefined"
+typeof window === "undefined";
 ```
 
 ```js
-typeof window !== "undefined"
+typeof window !== "undefined";
 ```
 
 ## Pass
 
 ```js
-typeof document === "undefined"
+typeof document === "undefined";
 ```
 
 ```js
-typeof document !== "undefined"
+typeof document !== "undefined";
 ```
 
 ## Credits

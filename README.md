@@ -11,7 +11,7 @@ It's recommended to use `document` over `window` because server runtimes like De
 ## Installation
 
 ```bash
-$ pnpm add -D eslint eslint-plugin-no-typeof-window-undefined
+pnpm add -D eslint eslint-plugin-no-typeof-window-undefined
 ```
 
 ## Usage
@@ -20,9 +20,7 @@ Add to `.eslintrc`
 
 ```json
 {
-  "extends": [
-    "plugin:no-typeof-window-undefined/recommended"
-  ]
+  "extends": ["plugin:no-typeof-window-undefined/recommended"]
 }
 ```
 
@@ -31,10 +29,9 @@ Add to `.eslintrc`
 ✅ Set in the `recommended` configuration
 🔧 Automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/user-guide/command-line-interface#--fix).\
 
-
-| Name                                                                                             | Description                                                                                                                                                                                                       | 💼 | 🔧 |
-| :----------------------------------------------------------------------------------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :- | :- |
-| [no-typeof-window-undefined](docs/rules/no-typeof-window-undefined.md)                                                       | Improve SSR/Browser environment check by using typeof document !== "undefined".                                                                                                                                                    | ✅  |🔧 |
+| Name                                                                   | Description                                                                     | 💼  | 🔧  |
+| :--------------------------------------------------------------------- | :------------------------------------------------------------------------------ | :-- | :-- |
+| [no-typeof-window-undefined](docs/rules/no-typeof-window-undefined.md) | Improve SSR/Browser environment check by using typeof document !== "undefined". | ✅  | 🔧  |
 
 ### no-typeof-window-undefined
 
@@ -43,9 +40,9 @@ code that only runs in one context or the other:
 
 ```ts
 if (typeof window === "undefined") {
-// running in a server environment
+  // running in a server environment
 } else {
-// running in a browser environment
+  // running in a browser environment
 }
 ```
 
@@ -54,14 +51,13 @@ you're running in the browser, it's better to check for document instead:
 
 ```ts
 if (typeof document === "undefined") {
-// running in a server environment
+  // running in a server environment
 } else {
-// running in a browser environment
+  // running in a browser environment
 }
 ```
 
 This will work for all JS environments (Node.js, Deno, Workers, etc.).
-
 
 ## Credits
 
