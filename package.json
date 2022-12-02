@@ -17,6 +17,7 @@
   "files": [
     "README.md",
     "package.json",
+    "docs",
     "lib"
   ],
   "scripts": {
