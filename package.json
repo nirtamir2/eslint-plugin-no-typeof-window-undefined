@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-no-typeof-window-undefined",
-  "version": "0.0.1-rc-1",
+  "version": "0.0.1-alpha-1",
   "description": "ESLint rule to avoid typeof window === 'undefined' for SSR check",
   "keywords": [
     "eslint",
