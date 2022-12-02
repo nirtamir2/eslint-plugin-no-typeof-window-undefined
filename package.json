@@ -1,70 +1,65 @@
 {
   "name": "eslint-plugin-no-typeof-window-undefined",
-  "version": "1.2.2",
-  "description": "ESLint rule that helps sort export *",
-  "repository": {
-    "url": "https://github.com/nirtamir2/eslint-plugin-no-typeof-window-undefined",
-    "type": "git"
-  },
-  "main": "lib/index.js",
-  "scripts": {
-    "clean": "rimraf lib",
-    "build": "tsc",
-    "test": "jest",
-    "prettier": "prettier --write \"**/*.{ts,js,json}\"",
-    "lint": "eslint --fix \"src/**/*.{ts,js,json}\"",
-    "prepublish": "npm run clean && npm run build"
-  },
-  "files": [
-    "README.md",
-    "package.json",
-    "lib"
-  ],
+  "version": "0.0.1",
+  "description": "ESLint rule to avoid typeof window === 'undefined' for SSR check",
   "keywords": [
     "eslint",
     "eslintplugin",
     "eslint-plugin"
   ],
-  "author": "Nir Tamir <nirtamir2@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nirtamir2/eslint-plugin-no-typeof-window-undefined"
+  },
   "license": "MIT",
-  "devDependencies": {
-    "@types/eslint": "^7.28.2",
-    "@types/natural-compare": "^1.4.1",
-    "@types/node": "^16.11.6",
-    "@typescript-eslint/eslint-plugin": "^5.3.0",
-    "@typescript-eslint/parser": "^5.3.0",
-    "concurrently": "^6.3.0",
-    "eslint": "^8.2.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-typescript": "^3.0.0",
-    "eslint-plugin-import": "^2.25.2",
-    "jest": "^27.3.1",
-    "prettier": "^2.4.1",
-    "rimraf": "^3.0.2",
-    "ts-jest": "^27.0.7",
-    "typescript": "~4.4.4"
-  },
-  "dependencies": {
-    "natural-compare": "^1.4.0"
-  },
-  "peerDependencies": {
-    "eslint": "^4 || ^5 || ^6 || ^7 || ^8"
+  "author": "Nir Tamir <nirtamir2@gmail.com>",
+  "main": "lib/index.js",
+  "files": [
+    "README.md",
+    "package.json",
+    "lib"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "clean": "rimraf lib",
+    "format": "prettier --write \"**/*.{ts,js,json}\"",
+    "lint": "eslint --fix \"src/**/*.{ts,js,json}\"",
+    "prepublish": "npm run clean && npm run build",
+    "test": "jest"
   },
   "jest": {
-    "transform": {
-      "^.+\\.ts$": "ts-jest"
-    },
-    "testRegex": "(src/.*\\.test)\\.ts$",
+    "moduleFileExtensions": [
+      "js",
+      "ts",
+      "json"
+    ],
     "testPathIgnorePatterns": [
       "/node_modules/",
       "\\.d\\.ts$",
       "lib/.*"
     ],
-    "moduleFileExtensions": [
-      "js",
-      "ts",
-      "json"
-    ]
+    "testRegex": "(src/.*\\.test)\\.ts$",
+    "transform": {
+      "^.+\\.ts$": "ts-jest"
+    }
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@tsconfig/strictest": "^1.0.2",
+    "@types/eslint": "^8.4.10",
+    "@types/node": "^16.11.6",
+    "concurrently": "^7.6.0",
+    "eslint": "^8.28.0",
+    "eslint-config-nirtamir2": "^0.0.45",
+    "eslint-plugin-eslint-plugin": "^5.0.6",
+    "jest": "^29.3.1",
+    "prettier": "^2.8.0",
+    "prettier-plugin-packagejson": "^2.3.0",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^29.0.3",
+    "typescript": "~4.9.3"
+  },
+  "peerDependencies": {
+    "eslint": "^4 || ^5 || ^6 || ^7 || ^8"
   }
 }

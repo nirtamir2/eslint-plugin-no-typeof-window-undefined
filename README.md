@@ -1,6 +1,8 @@
 # eslint-plugin-no-typeof-window-undefined
 
-ESLint rule that sorts `exports *` with autofix enabled
+ESLint rule that helps avoid `typeof window === "undefined"` check and fix it to `typeof document === "undefined"`
+instead.
+It's recommended to use `document` over `window` because server runtimes like Deno have a global window available.
 
 [![npm version](https://badge.fury.io/js/eslint-plugin-no-typeof-window-undefined.svg)](https://badge.fury.io/js/eslint-plugin-no-typeof-window-undefined)
 
@@ -10,27 +12,31 @@ ESLint rule that sorts `exports *` with autofix enabled
 
 You'll first need to install [ESLint](http://eslint.org):
 
-```
-$ yarn add eslint --dev
+```bash
+$ pnpm add eslint --D
 $ npm i eslint --save-dev
 ```
 
 Next, install `eslint-plugin-no-typeof-window-undefined`:
 
-```
-$ yarn add eslint-plugin-no-typeof-window-undefined --dev
+```bash
+$ pnpm add -D eslint-plugin-no-typeof-window-undefined
 $ npm install eslint-plugin-no-typeof-window-undefined --save-dev
 ```
 
-**Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-no-typeof-window-undefined` globally.
+**Note:** If you installed ESLint globally (using the `-g` flag) then you must also
+install `eslint-plugin-no-typeof-window-undefined` globally.
 
 ## Usage
 
-Add `no-typeof-window-undefined` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
+Add `no-typeof-window-undefined` to the plugins section of your `.eslintrc` configuration file. You can omit
+the `eslint-plugin-` prefix:
 
 ```json
 {
-  "plugins": ["no-typeof-window-undefined"]
+  "plugins": [
+    "no-typeof-window-undefined"
+  ]
 }
 ```
 
@@ -48,11 +54,14 @@ Or enable it with defaults
 
 ```json
 {
-  "extends": ["plugin:no-typeof-window-undefined/recommended"]
+  "extends": [
+    "plugin:no-typeof-window-undefined/recommended"
+  ]
 }
 ```
 
-Often it makes sense to enable `no-typeof-window-undefined` only for certain files/directories. For cases like that, use override key of eslint config:
+Often it makes sense to enable `no-typeof-window-undefined` only for certain files/directories. For cases like that, use
+override key of eslint config:
 
 ```jsonc
 {
@@ -71,37 +80,6 @@ Often it makes sense to enable `no-typeof-window-undefined` only for certain fil
 }
 ```
 
-## Rule configuration
-
-- The 1st option is `"asc"` or `"desc"`.
-
-  `"asc"` (default) - enforce properties to be in ascending order.
-
-  `"desc"` - enforce properties to be in descending order.
-
-- The 2nd option is an object which has 3 properties.
-
-  `caseSensitive` - if `true`, enforce properties to be in case-sensitive order. Default is `true`.
-
-  `natural` - if `true`, enforce properties to be in natural order. Default is false. Natural Order compares strings containing combination of letters and numbers in the way a human being would sort. It basically sorts numerically, instead of sorting alphabetically. So the number 10 comes after the number `3` in Natural Sorting.
-
-  ```
-  Standard sorting:   Natural order sorting:
-      img1.png            img1.png
-      img10.png           img2.png
-      img12.png           img10.png
-      img2.png            img12.png
-  ```
-
-The default config is
-
-```javascript
-[
-  "warn",
-  "asc",
-  {
-    caseSensitive: true,
-    natural: false,
-  },
-];
-```
+## Credits
+- https://twitter.com/JLarky/status/1598147116093693952
+- [Remix documentation](https://remix.run/docs/en/v1/pages/gotchas#typeof-window-checks)
