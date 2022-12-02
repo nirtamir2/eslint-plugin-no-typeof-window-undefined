@@ -6,7 +6,6 @@ It's recommended to use `document` over `window` because server runtimes like De
 
 [![npm version](https://badge.fury.io/js/eslint-plugin-no-typeof-window-undefined.svg)](https://badge.fury.io/js/eslint-plugin-no-typeof-window-undefined)
 
-![Example](./example.gif)
 
 ## Installation
 
